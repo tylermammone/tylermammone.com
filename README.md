@@ -1,2 +1,2 @@
 # tylermammone.com
-static placeholder site with redirects
+Static placeholder site with redirects hosted via GitHub Pages
