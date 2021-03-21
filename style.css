@@ -56,6 +56,9 @@ h1 {
 #bio {
     color: #7e7e7f;
 }
+.fa {
+    margin: 0 4px;
+}
 #footer {
     padding: 8px 16px;
     text-align: center;
