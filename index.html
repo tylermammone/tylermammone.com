@@ -169,7 +169,7 @@ h1 {
 
 .category-links ul {
     list-style-type: none;
-    padding: 0 1rem 1rem 1rem;
+    padding: 0;
     margin: 0;
 }
 
@@ -177,39 +177,11 @@ h1 {
     margin-bottom: 0.5rem;
 }
 
-.social-links a {
-    color: hsl(var(--card-foreground));
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    padding: 0.5rem;
-    border-radius: var(--radius);
-    font-size: 0.875rem;
-}
-
-.social-links a:hover, .social-links a:focus {
-    background-color: hsl(var(--secondary));
-    color: hsl(var(--secondary-foreground));
-}
-
-.social-links i {
-    font-size: 1rem;
-    margin-right: 0.5rem;
-    width: 1.5rem;
-    text-align: center;
-}
-
-.contact-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin: 1.5rem 1rem;
-}
-
-.contact-button {
+.interactive-item {
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
+    width: 100%;
     border-radius: var(--radius);
     font-size: 0.875rem;
     font-weight: 500;
@@ -219,33 +191,45 @@ h1 {
     cursor: pointer;
     border: none;
     text-decoration: none;
-    width: 100%;
     text-align: left;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
     background-color: transparent;
 }
 
-.contact-button:hover, .contact-button:focus {
+.interactive-item:hover, .interactive-item:focus {
     background-color: hsl(var(--secondary));
     color: hsl(var(--secondary-foreground));
 }
 
-.contact-button:focus-visible {
+.interactive-item:focus-visible {
     outline: 2px solid hsl(var(--ring));
     outline-offset: 2px;
 }
 
-.contact-button i {
+.interactive-item i {
     margin-right: 0.5rem;
     width: 1.5rem;
     text-align: center;
+    color: hsl(var(--muted-foreground));
+    transition: color 0.2s ease;
 }
 
-.contact-button span {
+.interactive-item:hover i, .interactive-item:focus i {
+    color: hsl(var(--card-foreground));
+}
+
+.interactive-item span {
     flex-grow: 1;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.contact-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
 }
 
 #footer {
@@ -268,7 +252,7 @@ h1 {
     <p id="title">full-stack engineer</p>
     <p id="bio">
         find me writing code, biking, hiking, and gardening in the majestic adirondack mountains of upstate new york. my portfolio will be at this address soon...
-        
+
         let's connect via your favorite network!
     </p>
     <div class="social-links">
@@ -276,14 +260,14 @@ h1 {
             <div class="category-title">Social</div>
             <div class="category-links">
                 <ul>
-                    <li><a href="https://tylermammone.com/facebook" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i>Facebook</a></li>
-                    <li><a href="https://tylermammone.com/instagram" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i>Instagram</a></li>
-                    <li><a href="https://tylermammone.com/twitter" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i>Twitter</a></li>
-                    <li><a href="https://tylermammone.com/threads" target="_blank" aria-label="Threads"><i class="fa-brands fa-threads"></i>Threads</a></li>
-                    <li><a href="https://tylermammone.com/bluesky" target="_blank" aria-label="Bluesky"><i class="fa-brands fa-bluesky"></i>Bluesky</a></li>
-                    <li><a href="https://tylermammone.com/reddit" target="_blank" aria-label="Reddit"><i class="fa-brands fa-reddit"></i>Reddit</a></li>
-                    <li><a href="https://tylermammone.com/tumblr" target="_blank" aria-label="Tumblr"><i class="fa-brands fa-tumblr"></i>Tumblr</a></li>
-                    <li><a href="https://tylermammone.com/pinterest" target="_blank" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i>Pinterest</a></li>
+                    <li><a href="https://tylermammone.com/facebook" target="_blank" aria-label="Facebook" class="interactive-item"><i class="fa-brands fa-facebook"></i><span>Facebook</span></a></li>
+                    <li><a href="https://tylermammone.com/instagram" target="_blank" aria-label="Instagram" class="interactive-item"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a></li>
+                    <li><a href="https://tylermammone.com/twitter" target="_blank" aria-label="Twitter" class="interactive-item"><i class="fa-brands fa-x-twitter"></i><span>Twitter</span></a></li>
+                    <li><a href="https://tylermammone.com/threads" target="_blank" aria-label="Threads" class="interactive-item"><i class="fa-brands fa-threads"></i><span>Threads</span></a></li>
+                    <li><a href="https://tylermammone.com/bluesky" target="_blank" aria-label="Bluesky" class="interactive-item"><i class="fa-brands fa-bluesky"></i><span>Bluesky</span></a></li>
+                    <li><a href="https://tylermammone.com/reddit" target="_blank" aria-label="Reddit" class="interactive-item"><i class="fa-brands fa-reddit"></i><span>Reddit</span></a></li>
+                    <li><a href="https://tylermammone.com/tumblr" target="_blank" aria-label="Tumblr" class="interactive-item"><i class="fa-brands fa-tumblr"></i><span>Tumblr</span></a></li>
+                    <li><a href="https://tylermammone.com/pinterest" target="_blank" aria-label="Pinterest" class="interactive-item"><i class="fa-brands fa-pinterest"></i><span>Pinterest</span></a></li>
                 </ul>
             </div>
         </div>
@@ -291,10 +275,10 @@ h1 {
             <div class="category-title">Media</div>
             <div class="category-links">
                 <ul>
-                    <li><a href="https://tylermammone.com/youtube" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i>YouTube</a></li>
-                    <li><a href="https://tylermammone.com/spotify" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify"></i>Spotify</a></li>
-                    <li><a href="https://tylermammone.com/soundcloud" target="_blank" aria-label="SoundCloud"><i class="fa-brands fa-soundcloud"></i>SoundCloud</a></li>
-                    <li><a href="https://tylermammone.com/lastfm" target="_blank" aria-label="Last.fm"><i class="fa-brands fa-lastfm"></i>Last.fm</a></li>
+                    <li><a href="https://tylermammone.com/youtube" target="_blank" aria-label="YouTube" class="interactive-item"><i class="fa-brands fa-youtube"></i><span>YouTube</span></a></li>
+                    <li><a href="https://tylermammone.com/spotify" target="_blank" aria-label="Spotify" class="interactive-item"><i class="fa-brands fa-spotify"></i><span>Spotify</span></a></li>
+                    <li><a href="https://tylermammone.com/soundcloud" target="_blank" aria-label="SoundCloud" class="interactive-item"><i class="fa-brands fa-soundcloud"></i><span>SoundCloud</span></a></li>
+                    <li><a href="https://tylermammone.com/lastfm" target="_blank" aria-label="Last.fm" class="interactive-item"><i class="fa-brands fa-lastfm"></i><span>Last.fm</span></a></li>
                 </ul>
             </div>
         </div>
@@ -302,26 +286,26 @@ h1 {
             <div class="category-title">Professional</div>
             <div class="category-links">
                 <ul>
-                    <li><a href="https://tylermammone.com/github" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i>GitHub</a></li>
-                    <li><a href="https://tylermammone.com/linkedin" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i>LinkedIn</a></li>
+                    <li><a href="https://tylermammone.com/github" target="_blank" aria-label="GitHub" class="interactive-item"><i class="fa-brands fa-github"></i><span>GitHub</span></a></li>
+                    <li><a href="https://tylermammone.com/linkedin" target="_blank" aria-label="LinkedIn" class="interactive-item"><i class="fa-brands fa-linkedin"></i><span>LinkedIn</span></a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="contact-buttons">
-        <a href="tel:+15183071761" id="phone-button" class="contact-button" title="Click to call or copy number">
+        <a href="tel:+15183071761" id="phone-button" class="interactive-item" title="Click to call or copy number">
             <i class="fa-solid fa-phone"></i>
             <span id="phone-number">518-307-1761</span>
         </a>
-        <button id="email-button" class="contact-button" title="Click to copy email address">
+        <button id="email-button" class="interactive-item" title="Click to copy email address">
             <i class="fa-solid fa-envelope"></i>
             <span id="email-address">tyler@tylermammone.com</span>
         </button>
-        <button id="bitcoin-button" class="contact-button" title="Click to copy Bitcoin address">
+        <button id="bitcoin-button" class="interactive-item" title="Click to copy Bitcoin address">
             <i class="fa-brands fa-bitcoin"></i>
             <span id="bitcoin-address">bc1qfas0s3dm06dxg3yc905gya8cwzvmaae744zp03</span>
         </button>
-        <button id="cash-app-button" class="contact-button" title="Click to copy Cash App address">
+        <button id="cash-app-button" class="interactive-item" title="Click to copy Cash App address">
             <i class="fa-solid fa-dollar-sign"></i>
             <span id="cash-app-address">$tylermammone</span>
         </button>
@@ -342,12 +326,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const bitcoinAddress = document.getElementById('bitcoin-address');
     const cashAppButton = document.getElementById('cash-app-button');
     const cashAppAddress = document.getElementById('cash-app-address');
+    const categoryTitles = document.querySelectorAll('.category-title');
+    const card = document.getElementById('card');
 
     function copyToClipboard(text, element, originalText, successText) {
         navigator.clipboard.writeText(text).then(() => {
             element.textContent = successText;
+            element.parentElement.classList.add('active');
             setTimeout(() => {
                 element.textContent = originalText;
+                element.parentElement.classList.remove('active');
             }, 2000);
         }).catch(err => {
             console.error('Failed to copy: ', err);
@@ -362,7 +350,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     emailButton.addEventListener('click', function() {
-        copyToClipboard(emailAddress.textContent, emailAddress, emailAddress.textContent, 'Email copied!');
+        copyToClipboard(emailAddress.textContent, emailAddress,
+emailAddress.textContent, 'Email copied!');
     });
 
     bitcoinButton.addEventListener('click', function() {
@@ -373,24 +362,35 @@ document.addEventListener('DOMContentLoaded', function() {
         copyToClipboard(cashAppAddress.textContent, cashAppAddress, cashAppAddress.textContent, 'Cash App address copied!');
     });
 
-    const categoryTitles = document.querySelectorAll('.category-title');
-    categoryTitles.forEach(title => {
-        title.addEventListener('click', function() {
-            const isActive = this.classList.contains('active');
-            const links = this.nextElementSibling;
-            
-            // Close all accordions
-            categoryTitles.forEach(t => {
-                t.classList.remove('active');
-                t.nextElementSibling.classList.remove('active');
-            });
+    function closeAllAccordions() {
+        categoryTitles.forEach(title => {
+            title.classList.remove('active');
+            title.nextElementSibling.classList.remove('active');
+        });
+    }
 
-            // If the clicked accordion wasn't active, open it
+    categoryTitles.forEach(title => {
+        title.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isActive = this.classList.contains('active');
+            
+            closeAllAccordions();
+
             if (!isActive) {
                 this.classList.add('active');
-                links.classList.add('active');
+                this.nextElementSibling.classList.add('active');
             }
         });
+    });
+
+    // Close accordions when clicking anywhere on the document
+    document.addEventListener('click', function(e) {
+        closeAllAccordions();
+    });
+
+    // Prevent accordion closing when clicking inside the card
+    card.addEventListener('click', function(e) {
+        e.stopPropagation();
     });
 });
 </script>
