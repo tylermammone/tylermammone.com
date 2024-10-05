@@ -1,59 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tyler Mammone - Full-stack Engineer</title>
+<meta name="author" content="tyler@tylermammone.com">
+<meta name="copyright" content="tyler mammone. all rights reserved.">
+<meta name="description" content="Tyler Mammone - Full-stack Engineer">
+<meta name="keywords" content="web development, web developer, mobile development, mobile developer, app development, app developer">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root {
+    --background: 240 3% 16%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 3% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 3% 16%;
+    --primary: 240 3% 26%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 3% 96%;
+    --secondary-foreground: 240 3% 16%;
+    --muted: 240 3% 98%;
+    --muted-foreground: 240 3% 46%;
+    --accent: 240 3% 76%;
+    --accent-foreground: 240 3% 16%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 3% 86%;
+    --input: 240 3% 86%;
+    --ring: 240 3% 36%;
+    --radius: 4px;
+}
 
-<!doctype html>
-<!--[if IE 8]><html class="lt-ie10 lt-ie9"> <![endif]-->
-<!--[if IE 9]><html class="lt-ie10"> <![endif]-->
-<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
-<head lang="en">
-    <title>TylerMammone.com</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="tyler@tylermammone.com">
-    <meta name="copyright" content="tyler mammone. all rights reserved.">
-    <meta name="description" content="Tyler Mammone">
-    <meta name="distribution" content="global">
-    <meta name="generator" content="https://tylermammone.com">
-    <meta name="keywords" content="web development, web developer, mobile development, mobile developer, app development, app developer">
-    <meta name="rating" content="general">
-    <meta name="resource-type" content="document">
-    <meta name="revisit-after" content="1 days">
-    <meta name="robots" content="index, follow">
-    <link rel="stylesheet" href="style.css" id="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+* {
+    border-color: hsl(var(--border));
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #29292B;
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+html {
+    font-size: 16px;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+body {
+    padding: clamp(0.5rem, 2.5vw, 1.5rem);
+    width: 100%;
+}
+
+#card {
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    width: 100%;
+    max-width: calc(400px + 2rem);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.card-content {
+    padding: 1rem;
+}
+
+#avatar {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    margin: 0 auto 1rem;
+    border-radius: var(--radius);
+}
+
+#avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+#title {
+    font-size: 1rem;
+    color: hsl(var(--muted-foreground));
+    margin-top: 0.5rem;
+    text-align: center;
+    line-height: 1.5;
+}
+
+#bio {
+    margin: 1.5rem 0;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: hsl(var(--card-foreground));
+}
+
+.social-links {
+    margin: 1.5rem 0;
+}
+
+.social-category {
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.social-category:last-child {
+    border-bottom: none;
+}
+
+.category-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: hsl(var(--muted-foreground));
+}
+
+.category-title:hover, .category-title.active {
+    color: hsl(var(--card-foreground));
+}
+
+.category-title::after {
+    content: '+';
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.category-title.active::after {
+    transform: rotate(45deg);
+}
+
+.category-links {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.category-links.active {
+    max-height: 1000px;
+    transition: max-height 0.5s ease-in;
+}
+
+.category-links ul {
+    list-style-type: none;
+    padding: 0 1rem 1rem 1rem;
+    margin: 0;
+}
+
+.category-links li {
+    margin-bottom: 0.5rem;
+}
+
+.social-links a {
+    color: hsl(var(--card-foreground));
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+}
+
+.social-links a:hover, .social-links a:focus {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+}
+
+.social-links i {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    width: 1.5rem;
+    text-align: center;
+}
+
+.contact-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1.5rem 1rem;
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1;
+    padding: 0.5rem;
+    color: hsl(var(--card-foreground));
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.2s ease;
+    background-color: transparent;
+}
+
+.contact-button:hover, .contact-button:focus {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+}
+
+.contact-button:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+}
+
+.contact-button i {
+    margin-right: 0.5rem;
+    width: 1.5rem;
+    text-align: center;
+}
+
+.contact-button span {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#footer {
+    margin-top: auto;
+    padding: 1rem;
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+    background-color: hsl(var(--muted));
+    text-align: center;
+}
+</style>
 </head>
 <body>
 <div id="card">
+<div class="card-content">
     <div id="avatar">
-        <img src="tylermammone.jpg">
+        <img src="https://tylermammone.com/tylermammone.jpg" alt="Tyler Mammone">
     </div>
-    <div id="content">
-        <h1>tyler mammone</h1>
-        <p id="title">full-stack engineer</p>
-        <p id="bio">
-            find me writing code, biking, hiking, and gardening in the majestic adirondack mountains of upstate new york. my portfolio will be at this address soon...<br /><br />
-            let's connect via your favorite social network!<br /><br />
-            <a target="_blank" href="https://tylermammone.com/bluesky"><i class="fa-brands fa-bluesky"></i></a>
-            <a target="_blank" href="https://tylermammone.com/facebook"><i class="fa-brands fa-facebook"></i></a>
-            <a target="_blank" href="https://tylermammone.com/github"><i class="fa-brands fa-github"></i></a>
-            <a target="_blank" href="https://tylermammone.com/instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a target="_blank" href="https://tylermammone.com/lastfm"><i class="fa-brands fa-lastfm"></i></a>
-            <a target="_blank" href="https://tylermammone.com/pinterest"><i class="fa-brands fa-pinterest"></i></a>
-            <a target="_blank" href="https://tylermammone.com/reddit"><i class="fa-brands fa-reddit"></i></a>
-            <a target="_blank" href="https://tylermammone.com/soundcloud"><i class="fa-brands fa-soundcloud"></i></a>
-            <a target="_blank" href="https://tylermammone.com/spotify"><i class="fa-brands fa-spotify"></i></a>
-            <a target="_blank" href="https://tylermammone.com/threads"><i class="fa-brands fa-threads"></i></a>
-            <a target="_blank" href="https://tylermammone.com/tumblr"><i class="fa-brands fa-tumblr"></i></a>
-            <a target="_blank" href="https://tylermammone.com/twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            <a target="_blank" href="https://tylermammone.com/youtube"><i class="fa-brands fa-youtube"></i></a><br /><br />
-            tyler@tylermammone.com<br /><br />
-            Signal: 5183071761<br /><br />
-            Cash App: <a target="_blank" href="https://cash.app/$tylermammone">$tylermammone</a><br /><br />
-            Bitcoin: <a target="_blank" href="btc.png">1MjQz4F8JPqGo9Kk3Z68vfHCyNviy8Ytmj</a>
-        </p>
+    <h1>tyler mammone</h1>
+    <p id="title">full-stack engineer</p>
+    <p id="bio">
+        find me writing code, biking, hiking, and gardening in the majestic adirondack mountains of upstate new york. my portfolio will be at this address soon...
+        
+        let's connect via your favorite network!
+    </p>
+    <div class="social-links">
+        <div class="social-category">
+            <div class="category-title">Social</div>
+            <div class="category-links">
+                <ul>
+                    <li><a href="https://tylermammone.com/facebook" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i>Facebook</a></li>
+                    <li><a href="https://tylermammone.com/instagram" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i>Instagram</a></li>
+                    <li><a href="https://tylermammone.com/twitter" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i>Twitter</a></li>
+                    <li><a href="https://tylermammone.com/threads" target="_blank" aria-label="Threads"><i class="fa-brands fa-threads"></i>Threads</a></li>
+                    <li><a href="https://tylermammone.com/bluesky" target="_blank" aria-label="Bluesky"><i class="fa-brands fa-bluesky"></i>Bluesky</a></li>
+                    <li><a href="https://tylermammone.com/reddit" target="_blank" aria-label="Reddit"><i class="fa-brands fa-reddit"></i>Reddit</a></li>
+                    <li><a href="https://tylermammone.com/tumblr" target="_blank" aria-label="Tumblr"><i class="fa-brands fa-tumblr"></i>Tumblr</a></li>
+                    <li><a href="https://tylermammone.com/pinterest" target="_blank" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i>Pinterest</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="social-category">
+            <div class="category-title">Media</div>
+            <div class="category-links">
+                <ul>
+                    <li><a href="https://tylermammone.com/youtube" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i>YouTube</a></li>
+                    <li><a href="https://tylermammone.com/spotify" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify"></i>Spotify</a></li>
+                    <li><a href="https://tylermammone.com/soundcloud" target="_blank" aria-label="SoundCloud"><i class="fa-brands fa-soundcloud"></i>SoundCloud</a></li>
+                    <li><a href="https://tylermammone.com/lastfm" target="_blank" aria-label="Last.fm"><i class="fa-brands fa-lastfm"></i>Last.fm</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="social-category">
+            <div class="category-title">Professional</div>
+            <div class="category-links">
+                <ul>
+                    <li><a href="https://tylermammone.com/github" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i>GitHub</a></li>
+                    <li><a href="https://tylermammone.com/linkedin" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i>LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div id="footer">
-        &copy; tylermammone.com
+    <div class="contact-buttons">
+        <a href="tel:+15183071761" id="phone-button" class="contact-button" title="Click to call or copy number">
+            <i class="fa-solid fa-phone"></i>
+            <span id="phone-number">518-307-1761</span>
+        </a>
+        <button id="email-button" class="contact-button" title="Click to copy email address">
+            <i class="fa-solid fa-envelope"></i>
+            <span id="email-address">tyler@tylermammone.com</span>
+        </button>
+        <button id="bitcoin-button" class="contact-button" title="Click to copy Bitcoin address">
+            <i class="fa-brands fa-bitcoin"></i>
+            <span id="bitcoin-address">bc1qfas0s3dm06dxg3yc905gya8cwzvmaae744zp03</span>
+        </button>
+        <button id="cash-app-button" class="contact-button" title="Click to copy Cash App address">
+            <i class="fa-solid fa-dollar-sign"></i>
+            <span id="cash-app-address">$tylermammone</span>
+        </button>
     </div>
 </div>
+<div id="footer">
+    &copy; tylermammone.com
+</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const phoneButton = document.getElementById('phone-button');
+    const phoneNumber = document.getElementById('phone-number');
+    const emailButton = document.getElementById('email-button');
+    const emailAddress = document.getElementById('email-address');
+    const bitcoinButton = document.getElementById('bitcoin-button');
+    const bitcoinAddress = document.getElementById('bitcoin-address');
+    const cashAppButton = document.getElementById('cash-app-button');
+    const cashAppAddress = document.getElementById('cash-app-address');
+
+    function copyToClipboard(text, element, originalText, successText) {
+        navigator.clipboard.writeText(text).then(() => {
+            element.textContent = successText;
+            setTimeout(() => {
+                element.textContent = originalText;
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+
+    phoneButton.addEventListener('click', function(e) {
+        if (e.target === phoneButton || e.target === phoneNumber) {
+            e.preventDefault();
+            copyToClipboard(phoneNumber.textContent, phoneNumber, phoneNumber.textContent, 'Phone number copied!');
+        }
+    });
+
+    emailButton.addEventListener('click', function() {
+        copyToClipboard(emailAddress.textContent, emailAddress, emailAddress.textContent, 'Email copied!');
+    });
+
+    bitcoinButton.addEventListener('click', function() {
+        copyToClipboard(bitcoinAddress.textContent, bitcoinAddress, bitcoinAddress.textContent, 'Bitcoin address copied!');
+    });
+
+    cashAppButton.addEventListener('click', function() {
+        copyToClipboard(cashAppAddress.textContent, cashAppAddress, cashAppAddress.textContent, 'Cash App address copied!');
+    });
+
+    const categoryTitles = document.querySelectorAll('.category-title');
+    categoryTitles.forEach(title => {
+        title.addEventListener('click', function() {
+            const isActive = this.classList.contains('active');
+            const links = this.nextElementSibling;
+            
+            // Close all accordions
+            categoryTitles.forEach(t => {
+                t.classList.remove('active');
+                t.nextElementSibling.classList.remove('active');
+            });
+
+            // If the clicked accordion wasn't active, open it
+            if (!isActive) {
+                this.classList.add('active');
+                links.classList.add('active');
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
