@@ -327,7 +327,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const cashAppButton = document.getElementById('cash-app-button');
     const cashAppAddress = document.getElementById('cash-app-address');
     const categoryTitles = document.querySelectorAll('.category-title');
-    const card = document.getElementById('card');
 
     function copyToClipboard(text, element, originalText, successText) {
         navigator.clipboard.writeText(text).then(() => {
@@ -350,9 +349,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     emailButton.addEventListener('click', function() {
-        copyToClipboard(emailAddress.textContent, emailAddress,
-emailAddress.textContent, 'Email copied!');
+        copyToClipboard(emailAddress.textContent, emailAddress, emailAddress.textContent, 'Email copied!');
     });
+
+    
 
     bitcoinButton.addEventListener('click', function() {
         copyToClipboard(bitcoinAddress.textContent, bitcoinAddress, bitcoinAddress.textContent, 'Bitcoin address copied!');
@@ -384,13 +384,8 @@ emailAddress.textContent, 'Email copied!');
     });
 
     // Close accordions when clicking anywhere on the document
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function() {
         closeAllAccordions();
-    });
-
-    // Prevent accordion closing when clicking inside the card
-    card.addEventListener('click', function(e) {
-        e.stopPropagation();
     });
 });
 </script>
